@@ -1,0 +1,4 @@
+name = "CoReGyControl"
+uuid = "26512930-fd53-4cb0-9dff-d2971d6e715b"
+authors = ["David Hervas <hervasa2@live.unc.edu>"]
+version = "0.1.0"
