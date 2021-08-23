@@ -122,8 +122,8 @@ function store_axis_parameter_permanent(device::TMCM3110, n_axisparameter, n_mot
     end
 end
 
-function list_all_axis_parameters(device::TMCM3110)
-    for key in sort(collect(keys(TMCM3110_AXIS_PARAMETER))) # wrong oder
+function list_all_axis_parameters(device::TMCM3110; pars = : )
+    for key in sort(collect(keys(TMCM3110_AXIS_PARAMETER)))[pars] # wrong oder
       axis_parameters = Any[0,0,0]
       for i in 1:3
         axis_parameters[i] = get_axis_parameter(device, key, i-1)
@@ -138,6 +138,8 @@ function list_all_axis_parameters(device::TMCM3110)
     end
     return nothing
 end
+
+list_motion_axis_parameters(device::TMCM3110) = list_all_axis_parameters(device::TMCM3110; pars = 1:4 )
 
 function move(device::TMCM3110, n_motor, value)
     try

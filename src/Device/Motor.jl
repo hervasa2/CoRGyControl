@@ -47,7 +47,7 @@ function convert_unit_to_steps(m::Motor, value::Value)::Union{Int32, Missing}
     if m.unit == u"mm"
         Int32(round( 25600 * value))
     elseif m.unit == u"°"
-        Int32(round((636977 / 360) * value))
+        Int32(round((637076 / 360) * value))
     else
         error("$(m.name) hat not the right unit. Must be ':mm' or ':degree'")
     end
@@ -62,7 +62,7 @@ function convert_steps_to_unit(m::Motor, steps::Union{Int16, Int32, Int64, Missi
         end
     elseif m.unit == u"°"
         try
-            return Float64(steps * (360/636876) )
+            return Float64(steps * (360 / 637076) )
         catch err
             @warn err
             return missing
