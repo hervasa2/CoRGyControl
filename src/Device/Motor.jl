@@ -173,7 +173,7 @@ function calibrate_motor(m::Motor; force::Bool = false)::Nothing
             update_motor_position!(m)
             update_encoder_position!(m)
             if !ismissing(m.motor_position) && !ismissing(m.encoder_position)
-                @info "Moving $(m.name) to -10° to ensure proper cable management."
+                @warning "Move $(m.name) to -10° to ensure proper cable management."
                 δ = m.encoder_position - m.motor_position
                 move_to(m, -10 - δ, force = true)
             end
